@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 class BlogsController extends Controller
 {
     public function index() {
-        return "Hello, world!";
+        return view("index");
+    }
+
+    public function show($id) {
+        return view("posts.show")->with("id", $id);
+    }
+
+    public function show_comments($id) {
+        return view("posts/comments")->with("id", $id);
     }
 
     public function create() {
