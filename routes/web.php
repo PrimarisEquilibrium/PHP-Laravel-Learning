@@ -13,7 +13,7 @@ Route::view("about", "about")->name("about");
 Route::resource("posts", BlogResourceController::class)
     ->only(["index", "show", "create", "store"])
     ->where(["id" => "[0-9]+"])
-    ->parameters(["posts" => "id"]);
+    ->parameters(["posts" => "blog"]);
 
 Route::fallback(function () {
     return view("fallback");

@@ -9,8 +9,10 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["title", "author", "blog"];
+
     protected $table = "blogs";
     protected $primaryKey = "id";
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = true;
 }

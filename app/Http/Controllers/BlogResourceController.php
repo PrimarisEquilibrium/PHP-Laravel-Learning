@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class BlogResourceController extends Controller
 {
@@ -29,23 +30,16 @@ class BlogResourceController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(["title", "author", "blog"]);
-        ['title' => $title, 'author' => $author] = $data;
-        return "
-            Submission Successful!
-            <br>
-            Title: $title
-            <br>
-            Author: $author
-        ";
+        $blog = new Blog($request->only(["title", "author", "blog"]));
+        $blog->save();
+        return redirect()->route("posts.show", ["blog" => $blog]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Blog $blog)
     {
-        $blog = Blog::where("id", $id)->get()[0];
         return view("posts.show", ["blog" => $blog]);
     }
 

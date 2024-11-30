@@ -1,4 +1,5 @@
 <h1>Blogs</h1>
+<a href="<?php echo route("home") ?>">Return Home</a>
 <hr>
 <?php
 foreach ($blogs as &$blog) {?>
