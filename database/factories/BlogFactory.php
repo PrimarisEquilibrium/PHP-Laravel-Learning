@@ -22,7 +22,7 @@ class BlogFactory extends Factory
         return [
             "title" => fake()->sentence(),
             "author" => fake()->name(),
-            "blog" => fake()->paragraph(),
+            "blog" => fake()->paragraphs(6, true),
             "created_at" => now(),
             "updated_at" => now(),
         ];
